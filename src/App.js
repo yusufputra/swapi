@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import { Switch, Route, Redirect } from "react-router-dom";
+import "./App.css";
+import Planets from "./pages/Planets";
+import People from "./pages/People";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar></Navbar>
+      <div className="content">
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/planets" />
+          </Route>
+          <Route path="/planets" component={Planets} />
+          <Route path="/people" component={People} />
+        </Switch>
+      </div>
     </div>
   );
 }
